@@ -3,7 +3,6 @@
 """
 Created on Sat Sep 19 01:30:46 2026
 
-@author: j
 """
 
 class PuntoCoordernadas:
