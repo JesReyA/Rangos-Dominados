@@ -8,11 +8,18 @@ Created on Mon Sep 21 08:00:37 2026
 
 from PuntoCoordenadas import PuntoCoordernadas
 
-puntoPrueba = PuntoCoordernadas("a", 1, 2)
-puntoPrueba2 = PuntoCoordernadas("b", 2, 3)
+punto_mayor = ""
+punto_A = PuntoCoordernadas("A", 1, 2)
+punto_B = PuntoCoordernadas("B", 2, 4)
+punto_C = PuntoCoordernadas("C", 3, 3)
+punto_D = PuntoCoordernadas("D", 4, 6)
+punto_E = PuntoCoordernadas("E", 7, 1)
 
-listaPuntos =[]
-listaPuntos.append(puntoPrueba)
-listaPuntos.append(puntoPrueba2)
+lista_puntos=[]
+lista_puntos.append(punto_A)
+lista_puntos.append(punto_B)
+lista_puntos.append(punto_C)
+lista_puntos.append(punto_D)
+lista_puntos.append(punto_E)
 
-print(listaPuntos[0].etiqueta)
+print(lista_puntos)
