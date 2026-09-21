@@ -6,7 +6,10 @@ Created on Sat Sep 19 01:30:46 2026
 """
 
 class PuntoCoordernadas:
-    def __init__(self, coordenadax, coordenaday):
+
+
+    def __init__(self, etiqueta,coordenadax, coordenaday):
+        self.etiqueta = etiqueta
         self.coordenadax = coordenadax
         self.coordenaday = coordenaday
     
