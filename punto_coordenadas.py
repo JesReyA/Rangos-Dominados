@@ -14,4 +14,4 @@ class PuntoCoordernadas:
         self.coordenaday = coordenaday
     
     def __repr__(self):
-        return f"{self.coordenadax}, {self.coordenaday}"
+        return f"{self.etiqueta} = ({self.coordenadax}, {self.coordenaday})"
