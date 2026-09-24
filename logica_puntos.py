@@ -19,6 +19,3 @@ def ordenar_puntos(lista):
         mayores_pivote = [i for i in sobrante if i.coordenadax > pivote.coordenadax]
         return ordenar_puntos(menores_pivote) + [pivote] + ordenar_puntos(mayores_pivote)
     
-
-def crear_arbol_avl(lista):
-    print("Aquí empieza el arbol, obvio esto se va a quitar")
