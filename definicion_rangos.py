@@ -6,7 +6,7 @@ Created on Mon Sep 21 08:00:37 2026
 @author: erikazr
 """
 
-from PuntoCoordenadas import PuntoCoordernadas
+from punto_coordenadas import PuntoCoordernadas
 
 punto_mayor = ""
 punto_A = PuntoCoordernadas("A", 1, 2)
