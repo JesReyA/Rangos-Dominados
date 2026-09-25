@@ -54,7 +54,22 @@ class ArbolAVL:
     #Método para realizar las inserciones en el árbol
     def insertar(self, punto):
         self.raiz  = self.insertar_nodos(self.raiz, punto)
+
+    #Imprimir 
+    def imprimir_in_order(self):
+        self._recorrido_in_order_recursivo(self.raiz)
+        print("-------------")
         
+    #Método para recorrer todo el arbol AVL para imprimir desde menores hasta los mayores.
+    def _recorrido_in_order_recursivo (self, nodo_actual):
+        if nodo_actual != None:
+            #Va al hijo izquierdo (Menor)
+            self._recorrido_in_order_recursivo(nodo_actual.hijo_izquierdo)
+            #Imprime el dato del nodo central
+            print(f"Y:{nodo_actual.coordenaday_punto}  | {nodo_actual.punto_referenciado.etiqueta}")
+            #Va al hijo izquierdo(Mayor)
+            self._recorrido_in_order_recursivo(nodo_actual.hijo_derecho)
+            
     #Metodo recursivo de insercion
     def insertar_nodos(self, nodo_actual, punto):
         #Caso base

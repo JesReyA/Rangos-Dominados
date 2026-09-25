@@ -5,7 +5,7 @@ Created on Sat Sep 19 01:30:46 2026
 
 """
 
-class PuntoCoordernadas:
+class PuntoCoordenadas:
 
 
     def __init__(self, etiqueta,coordenadax, coordenaday):
