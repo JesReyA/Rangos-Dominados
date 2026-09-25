@@ -35,6 +35,8 @@ class ArbolAVL:
         #Se retorna el nodo que se ha modificado o subido para ser el nuevo
         return nuevo_nodo_raiz
     
+    
+    
     def rotacion_derecha(self, nodo):
         nuevo_nodo_raiz = nodo.hijo_izquierdo            #Variable para guardar el nodo que subirá
         
@@ -50,38 +52,25 @@ class ArbolAVL:
         
         #Se retorna el nodo que se ha modificado o subido para ser el nuevo
         return nuevo_nodo_raiz
+    
+    
         
     #Método para realizar las inserciones en el árbol
     def insertar(self, punto):
-        self.raiz  = self.insertar_nodos(self.raiz, punto)
-
-    #Imprimir 
-    def imprimir_in_order(self):
-        self._recorrido_in_order_recursivo(self.raiz)
-        print("-------------")
-        
-    #Método para recorrer todo el arbol AVL para imprimir desde menores hasta los mayores.
-    def _recorrido_in_order_recursivo (self, nodo_actual):
-        if nodo_actual != None:
-            #Va al hijo izquierdo (Menor)
-            self._recorrido_in_order_recursivo(nodo_actual.hijo_izquierdo)
-            #Imprime el dato del nodo central
-            print(f"Y:{nodo_actual.coordenaday_punto}  | {nodo_actual.punto_referenciado.etiqueta}")
-            #Va al hijo izquierdo(Mayor)
-            self._recorrido_in_order_recursivo(nodo_actual.hijo_derecho)
+        self.raiz  = self._insertar_nodos(self.raiz, punto)
             
     #Metodo recursivo de insercion
-    def insertar_nodos(self, nodo_actual, punto):
+    def _insertar_nodos(self, nodo_actual, punto):
         #Caso base
         if (nodo_actual == None):
             return Nodo(punto.coordenaday, punto)
         else:
             #Si es menor se inserta en los nodos izquierdos, se llama de forma recursiva a la funcion para localizar su lugar
             if (punto.coordenaday <= nodo_actual.coordenaday_punto):
-                nodo_actual.hijo_izquierdo = self.insertar_nodos(nodo_actual.hijo_izquierdo, punto)
+                nodo_actual.hijo_izquierdo = self._insertar_nodos(nodo_actual.hijo_izquierdo, punto)
             #Caso contrario se inserta del lado derecho
             else:
-                nodo_actual.hijo_derecho = self.insertar_nodos(nodo_actual.hijo_derecho, punto)
+                nodo_actual.hijo_derecho = self._insertar_nodos(nodo_actual.hijo_derecho, punto)
             
             #Se obtiene la altura del nodo actual luego de las inserciones
             nodo_actual.altura = 1 + max(self.obtener_altura(nodo_actual.hijo_izquierdo),self.obtener_altura(nodo_actual.hijo_derecho))
@@ -109,3 +98,19 @@ class ArbolAVL:
             
             return nodo_actual
         
+        
+        
+    #Imprimir 
+    def imprimir_in_order(self):
+        self._recorrido_in_order_recursivo(self.raiz)
+        print("-------------")
+        
+    #Método para recorrer todo el arbol AVL para imprimir desde menores hasta los mayores.
+    def _recorrido_in_order_recursivo (self, nodo_actual):
+        if nodo_actual != None:
+            #Va al hijo izquierdo (Menor)
+            self._recorrido_in_order_recursivo(nodo_actual.hijo_izquierdo)
+            #Imprime el dato del nodo central
+            print(f"Y:{nodo_actual.coordenaday_punto}  | {nodo_actual.punto_referenciado.etiqueta}")
+            #Va al hijo izquierdo(Mayor)
+            self._recorrido_in_order_recursivo(nodo_actual.hijo_derecho)
