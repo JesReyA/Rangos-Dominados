@@ -27,14 +27,14 @@ print(lista_puntos)
 lista_ordenada = logica_puntos.ordenar_puntos(lista_puntos)
 
 print(lista_ordenada)
+print("---------------------------------------")
 
 arbol = ArbolAVL()
-
-for punto in lista_ordenada:
-    arbol.insertar (punto)
-arbol.imprimir_in_order()
-
-
+    
+for i in lista_ordenada:
+    print(i)
+    print(arbol.obtener_rangos(i.coordenaday))
+    arbol.insertar(i)
 
 
 

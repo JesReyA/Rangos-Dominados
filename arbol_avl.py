@@ -103,7 +103,6 @@ class ArbolAVL:
     #Imprimir 
     def imprimir_in_order(self):
         self._recorrido_in_order_recursivo(self.raiz)
-        print("-------------")
         
     #Método para recorrer todo el arbol AVL para imprimir desde menores hasta los mayores.
     def _recorrido_in_order_recursivo (self, nodo_actual):
@@ -114,3 +113,26 @@ class ArbolAVL:
             print(f"Y:{nodo_actual.coordenaday_punto}  | {nodo_actual.punto_referenciado.etiqueta}")
             #Va al hijo izquierdo(Mayor)
             self._recorrido_in_order_recursivo(nodo_actual.hijo_derecho)
+            
+    #Método para obtener los dominados (cantidad y cuales)
+    def obtener_rangos(self, coordenaday):
+        lista_dominados = []
+        self._obtener_rangos_recursivo(self.raiz, coordenaday, lista_dominados)
+        return f"Cantidad Dominados = {len(lista_dominados)} \n Dominados = {lista_dominados}"
+        
+    def _obtener_rangos_recursivo(self, nodo_actual, coordenaday, lista):
+        if nodo_actual == None:
+            return 
+        else:
+            if coordenaday >= nodo_actual.coordenaday_punto:
+                self._obtener_rangos_recursivo(nodo_actual.hijo_izquierdo, coordenaday, lista)
+                lista.append(nodo_actual.punto_referenciado.etiqueta)
+                self._obtener_rangos_recursivo(nodo_actual.hijo_derecho,coordenaday, lista)
+                
+            else:
+                self._obtener_rangos_recursivo(nodo_actual.hijo_izquierdo, coordenaday, lista)
+                
+                
+                
+                
+                
