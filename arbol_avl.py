@@ -6,6 +6,7 @@ Created on Thu Sep 24 00:21:30 2026
 @author: j
 """
 from nodo_arbol import Nodo
+from punto_coordenadas import PuntoCoordenadas
 
 class ArbolAVL:
     def __init__(self):
@@ -49,4 +50,47 @@ class ArbolAVL:
         
         #Se retorna el nodo que se ha modificado o subido para ser el nuevo
         return nuevo_nodo_raiz
+        
+    #Método para realizar las inserciones en el árbol
+    def insertar(self, punto):
+        self.raiz  = self.insertar_nodos(self.raiz, punto)
+        
+    #Metodo recursivo de insercion
+    def insertar_nodos(self, nodo_actual, punto):
+        #Caso base
+        if (nodo_actual == None):
+            return Nodo(punto.coordenaday, punto)
+        else:
+            #Si es menor se inserta en los nodos izquierdos, se llama de forma recursiva a la funcion para localizar su lugar
+            if (punto.coordenaday <= nodo_actual.coordenaday_punto):
+                nodo_actual.hijo_izquierdo = self.insertar_nodos(nodo_actual.hijo_izquierdo, punto)
+            #Caso contrario se inserta del lado derecho
+            else:
+                nodo_actual.hijo_derecho = self.insertar_nodos(nodo_actual.hijo_derecho, punto)
+            
+            #Se obtiene la altura del nodo actual luego de las inserciones
+            nodo_actual.altura = 1 + max(self.obtener_altura(nodo_actual.hijo_izquierdo),self.obtener_altura(nodo_actual.hijo_derecho))
+            
+            #se obtiene el factor de balance del nodo actual luego de cada insercion
+            factor_balance_actual = self.factor_balance(nodo_actual)
+            
+            #Rotacion izquierda
+            if(factor_balance_actual < -1 and self.factor_balance(nodo_actual.hijo_derecho) <= 0 ):
+                return self.rotacion_izquierda(nodo_actual)
+            
+            #Rotacion derecha
+            if(factor_balance_actual > 1 and self.factor_balance(nodo_actual.hijo_izquierdo) >= 0 ):
+                return self.rotacion_derecha(nodo_actual)
+            
+            #Rotacion derecha-izquierda
+            if(factor_balance_actual < -1 and self.factor_balance(nodo_actual.hijo_derecho) >= 0 ):
+                nodo_actual.hijo_derecho = self.rotacion_derecha(nodo_actual.hijo_derecho)
+                return self.rotacion_izquierda(nodo_actual)
+            
+            #Rotación izquierda-derecha
+            if(factor_balance_actual > 1 and self.factor_balance(nodo_actual.hijo_izquierdo) <= 0 ):
+                nodo_actual.hijo_izquierdo = self.rotacion_izquierda(nodo_actual.hijo_izquierdo)
+                return self.rotacion_derecha(nodo_actual)
+            
+            return nodo_actual
         
