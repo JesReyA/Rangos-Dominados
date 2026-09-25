@@ -33,4 +33,20 @@ class ArbolAVL:
         
         #Se retorna el nodo que se ha modificado o subido para ser el nuevo
         return nuevo_nodo_raiz
+    
+    def rotacion_derecha(self, nodo):
+        nuevo_nodo_raiz = nodo.hijo_izquierdo            #Variable para guardar el nodo que subirá
+        
+        nodo_intercambiable_guardado = nuevo_nodo_raiz.hijo_derecho  #Variable necesaria para guardar el nodo de forma temporal
+    
+        nuevo_nodo_raiz.hijo_derecho = nodo           #El hijo derecho del nodo raíz ahora es todo todo lo que esta a la derecha del raiz anterior, incluido este
+        
+        nodo.hijo_izquierdo = nodo_intercambiable_guardado        #El hijo izquierdo del subarbol derecho es el nodo que se guardó para no perderse
+        
+        #Se calculan las alturas de los subarboles modificados y se suma uno por el nodo actual que se toma en cuenta
+        nodo.altura = 1 + max(self.obtener_altura(nodo.hijo_izquierdo),self.obtener_altura(nodo.hijo_derecho))
+        nuevo_nodo_raiz.altura = 1 + max(self.obtener_altura(nuevo_nodo_raiz.hijo_izquierdo),self.obtener_altura(nuevo_nodo_raiz.hijo_derecho))
+        
+        #Se retorna el nodo que se ha modificado o subido para ser el nuevo
+        return nuevo_nodo_raiz
         
