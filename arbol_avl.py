@@ -132,7 +132,10 @@ class ArbolAVL:
             else:
                 self._obtener_rangos_recursivo(nodo_actual.hijo_izquierdo, coordenaday, lista)
                 
-                
-                
+    def imprimir_rangos_punto(self, lista):
+        for i in lista:
+            print(i)
+            print(self.obtener_rangos(i.coordenaday))
+            self.insertar(i)
                 
                 

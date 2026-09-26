@@ -47,15 +47,12 @@ print(lista_puntos)
 lista_ordenada = logica_puntos.ordenar_puntos(lista_puntos)
 
 print(lista_ordenada)
+
 print("---------------------------------------")
 
+
 arbol = ArbolAVL()
-    
-for i in lista_ordenada:
-    print(i)
-    print(arbol.obtener_rangos(i.coordenaday))
-    arbol.insertar(i)
-    
+arbol.imprimir_rangos_punto(lista_ordenada)
 PuntoCoordenadas.graficar(lista_ordenada)
 
 
