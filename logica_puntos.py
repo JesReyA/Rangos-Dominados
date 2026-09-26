@@ -15,7 +15,7 @@ def ordenar_puntos(lista):
         indice_pivote = rn.randint(0, len(lista)-1)
         pivote = lista[indice_pivote]
         sobrante = lista[:indice_pivote] + lista[indice_pivote+1:]
-        menores_pivote = [i for i in sobrante if i.coordenadax <= pivote.coordenadax]
-        mayores_pivote = [i for i in sobrante if i.coordenadax > pivote.coordenadax]
+        menores_pivote = [i for i in sobrante if (i.coordenadax, -i.coordenaday) <= (pivote.coordenadax, -pivote.coordenaday)]
+        mayores_pivote = [i for i in sobrante if (i.coordenadax, -i.coordenaday) > (pivote.coordenadax, -pivote.coordenaday)]
         return ordenar_puntos(menores_pivote) + [pivote] + ordenar_puntos(mayores_pivote)
     

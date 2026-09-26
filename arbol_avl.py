@@ -124,9 +124,9 @@ class ArbolAVL:
         if nodo_actual == None:
             return 
         else:
-            if coordenaday >= nodo_actual.coordenaday_punto:
+            if coordenaday > nodo_actual.coordenaday_punto:
                 self._obtener_rangos_recursivo(nodo_actual.hijo_izquierdo, coordenaday, lista)
-                lista.append(nodo_actual.punto_referenciado.etiqueta)
+                lista.append(nodo_actual.punto_referenciado.etiqueta) 
                 self._obtener_rangos_recursivo(nodo_actual.hijo_derecho,coordenaday, lista)
                 
             else:
