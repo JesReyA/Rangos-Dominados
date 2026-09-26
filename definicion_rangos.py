@@ -35,6 +35,8 @@ for i in lista_ordenada:
     print(i)
     print(arbol.obtener_rangos(i.coordenaday))
     arbol.insertar(i)
+    
+PuntoCoordenadas.graficar(lista_ordenada)
 
 
 
